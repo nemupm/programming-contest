@@ -18,7 +18,7 @@
 #define REP(i,x) for(int i=0;i<(x);i++)
 #define RREP(i,x) for(int i=(x)-1;i>=0;i--)
 #define all(x) (x).begin(),(x).end()
-// #define int long long
+#define int long long
 
 using namespace std;
 
@@ -44,32 +44,23 @@ const int MAX_N = 100000;
 int N,x;
 int a[MAX_N];
 
-void solve() {
-    UnionFind roads(N);
-    UnionFind rails(N);
-    REP(i,K){
-        roads.unionSet(p[i]-1,q[i]-1);
+int solve() {
+    int ans = 0;
+    REP(i,N-1){
+        while(a[i] + a[i+1] > x){
+            int diff;
+            if(a[i+1] > 0){
+                diff = min(a[i] + a[i+1] - x, a[i+1]);
+                a[i+1] -= diff;
+            }
+            else{
+                diff = min(a[i] + a[i+1] - x, a[i]);
+                a[i] -= diff;
+            }
+            ans += diff;
+        }
     }
-    REP(i,L){
-        rails.unionSet(r[i]-1,s[i]-1);
-    }
-    map<pair<int,int>,int> towns;
-    REP(i,N){
-        int road,rail;
-        road = roads.root(i);
-        rail = rails.root(i);
-        if(towns.count(pair<int,int>(road,rail))) towns[pair<int,int>(road,rail)] += 1;
-        else towns[pair<int,int>(road,rail)] = 0;
-        dump(road);
-    }
-    REP(i,N){
-        int road,rail;
-        road = roads.root(i);
-        rail = rails.root(i);
-        cout << towns[pair<int,int>(road,rail)] + 1;
-        if(i < N-1) cout << " ";
-    }
-    cout << "\n";
+    return ans;
 }
 
 signed main() {
@@ -77,8 +68,7 @@ signed main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
 
-    cin >> N >> x >> L;
+    cin >> N >> x;
     REP(i,N) cin >> a[i];
-    solve();
-    return 0;
+    cout << solve() << "\n";
 }

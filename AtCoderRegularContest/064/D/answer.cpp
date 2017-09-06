@@ -40,36 +40,14 @@ typedef long long ll;
 
 using namespace std;
 
-const int MAX_N = 100000;
-int N,x;
-int a[MAX_N];
+string s;
 
-void solve() {
-    UnionFind roads(N);
-    UnionFind rails(N);
-    REP(i,K){
-        roads.unionSet(p[i]-1,q[i]-1);
-    }
-    REP(i,L){
-        rails.unionSet(r[i]-1,s[i]-1);
-    }
-    map<pair<int,int>,int> towns;
-    REP(i,N){
-        int road,rail;
-        road = roads.root(i);
-        rail = rails.root(i);
-        if(towns.count(pair<int,int>(road,rail))) towns[pair<int,int>(road,rail)] += 1;
-        else towns[pair<int,int>(road,rail)] = 0;
-        dump(road);
-    }
-    REP(i,N){
-        int road,rail;
-        road = roads.root(i);
-        rail = rails.root(i);
-        cout << towns[pair<int,int>(road,rail)] + 1;
-        if(i < N-1) cout << " ";
-    }
-    cout << "\n";
+bool solve() {
+    bool same_both_ends;
+    bool even_length;
+    same_both_ends = s.front() == s.back();
+    even_length = s.length() % 2 == 0;
+    return same_both_ends ^ even_length;
 }
 
 signed main() {
@@ -77,8 +55,7 @@ signed main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
 
-    cin >> N >> x >> L;
-    REP(i,N) cin >> a[i];
-    solve();
+    cin >> s;
+    cout << (solve() ? "Second" : "First") << "\n";
     return 0;
 }
