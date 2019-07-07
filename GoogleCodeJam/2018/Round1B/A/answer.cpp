@@ -45,22 +45,26 @@ string solve() {
     REP(i,0,L) remaining_people -= C[i];
 
     vector<int> rounded_up_numbers;
-    REP(i,0,N) {
+    REP(i,1,N+1) {
         double percent = 100.0 * i / N;
         double small_number = percent - (int)percent;
-        if(small_number >= 0.5) rounded_up_numbers.push_back(i);
+        if(small_number >= 0.5) {
+//            eprintf("rounded_up_number: %d, small_number: %f\n", i, small_number);
+            rounded_up_numbers.push_back(i);
+        }
     }
 
     vector<pair<int, int> > number_of_people_to_be_added;
     int size = number_of_people_to_be_added.size();
     REP(i,0,L) {
-        int nearest_number = lower_bound(all(rounded_up_numbers), C[i]) - rounded_up_numbers.begin();
-        if (nearest_number == size) continue; // not found
-        if (nearest_number != C[i]) number_of_people_to_be_added.push_back(make_pair(nearest_number - C[i], i));
+        vector<int>::iterator nearest_number = lower_bound(all(rounded_up_numbers), C[i]);
+//        eprintf("C[i]: %d, nn: %d\n", C[i], *nearest_number);
+        if (nearest_number == rounded_up_numbers.end()) continue; // not found
+        if (*nearest_number != C[i]) number_of_people_to_be_added.push_back(make_pair(*nearest_number - C[i], i));
     }
     sort(all(number_of_people_to_be_added));
 
-    // add remaining people to already picked languages
+    // [step1] add remaining people to already picked languages
     for(auto el : number_of_people_to_be_added) {
         int number = el.first;
         int index = el.second;
@@ -69,25 +73,32 @@ string solve() {
 
         C[index] += number;
         remaining_people -= number;
+
+        eprintf("[step1] C[i]: %d, number: %d, index: %d\n", C[index], number, index);
     }
 
-    // add remaining people to languages not picked yet (by min)
-    int min = lower_bound(all(rounded_up_numbers), 0) - rounded_up_numbers.begin();
-    if (min != size) {
-        while (remaining_people >= min) {
-            C.push_back(min);
-            remaining_people -= min;
+    // [step2] add remaining people to languages not picked yet (by min)
+    vector<int>::iterator min = lower_bound(all(rounded_up_numbers), 0);
+    if (min != rounded_up_numbers.end()) {
+        while (remaining_people >= *min) {
+            eprintf("[step2] min: %d, remaining_people: %d\n", *min, remaining_people);
+            C.push_back(*min);
+            remaining_people -= *min;
         }
     }
 
-    // add remaining people to languages not picked yet (all the remaining people)
-    if (remaining_people > 0) C.push_back(remaining_people);
+    // [step3] add remaining people to languages not picked yet (all the remaining people)
+    if (remaining_people > 0) {
+        eprintf("[step3] remaining_people: %d\n", remaining_people);
+        C.push_back(remaining_people);
+    }
 
-    // calculate answer
+    // [step4] calculate answer
     int answer = 0;
     for(auto el : C) {
         double percent = 100.0 * el / N;
         answer += round(percent);
+        eprintf("[step4] n: %d, N: %d, percent: %f, round(percent): %f\n", el, N, percent, round(percent));
     }
 
     return to_string(answer);
@@ -101,6 +112,7 @@ int main() {
     cin >> T;
     REP(i,0,T){
         cin >> N >> L;
+        C.clear();
         REP(j,0,L) {
             int l;
             cin >> l;
