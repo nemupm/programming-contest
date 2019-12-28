@@ -4,8 +4,8 @@
 %Code%
 
 int main() {
-	%ClassName% solver;
-	%Input%
+    %ClassName% solver;
+    %Input%
 	%Output%
 	%SolverCall%
 	return 0;

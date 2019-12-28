@@ -11,8 +11,8 @@ using namespace std;
 inline int toInt(string s) {int v; istringstream sin(s);sin>>v;return v;}
 template<class T> inline string toString(T x) {ostringstream sout;sout<<x;return sout.str();}
  
-#define dump(x)  cerr << #x << " = " << (x) << endl
-#define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
+#define dump(x)  cout << #x << " = " << (x) << endl
+#define debug(x) cout << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
  
 typedef long long ll;
  
@@ -20,6 +20,6 @@ const ll MOD = 1e9 + 7;
 
 class %ClassName% {
 public:
-	void solve(std::istream& in, std::ostream& out) {
-	}
+    void solve(std::istream& in, std::ostream& out) {
+    }
 };
