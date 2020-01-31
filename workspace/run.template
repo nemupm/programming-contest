@@ -27,7 +27,7 @@ bool check(std::string expected, std::string actual) {
 
 } // namespace jhelper
 
-int main() {
+signed main() {
 	std::vector<jhelper::Test> tests = {
 		%Tests%
 	};

@@ -3,7 +3,7 @@
 
 %Code%
 
-int main() {
+signed main() {
     %ClassName% solver;
     %Input%
 	%Output%
