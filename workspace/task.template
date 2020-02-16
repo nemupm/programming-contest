@@ -1,7 +1,7 @@
 #include "bits/stdc++.h"
  
-#define REP(i,x,y) for(int i=(x);i<(y);i++)
-#define RREP(i,x,y) for(int i=(y)-1;i>=(x);i--)
+#define REP(i,x,y) for(ll i=(x);i<(y);i++)
+#define RREP(i,x,y) for(ll i=(ll)(y)-1;i>=(x);i--)
 #define all(x) (x).begin(),(x).end()
 //#define int long long
  
