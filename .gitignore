@@ -1,2 +1,5 @@
 .idea/
 *.exe
+workspace/tasks/*.cpp
+workspace/output/main.cpp
+workspace/testrunner/main.cpp
