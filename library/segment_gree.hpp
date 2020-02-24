@@ -2,9 +2,10 @@
 class SegmentTree {
     vector<int> nodes_;
     int size_;
+    inline static constexpr int INIT = INT_MAX;
 
     int query (const int left, const int right, const int index, const int l, const int r) const {
-        if (r <= left || right <= l) return INT_MAX;
+        if (r <= left || right <= l) return INIT;
         if (left <= l && r <= right) return nodes_[index];
 
         return min (
@@ -17,7 +18,7 @@ public:
     SegmentTree(const int maxSize) {
         size_ = 1;
         while (size_ < maxSize) size_ *= 2;
-        nodes_ = vector<int> (2 * size_, INT_MAX);
+        nodes_ = vector<int> (2 * size_, INIT);
     };
 
     void update (int index, const int value) {
