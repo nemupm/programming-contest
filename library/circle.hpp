@@ -40,12 +40,14 @@ long double getDistance(Point const & a, Point const & b) {
 }
 
 vector<Point> getIntersections(Circle const & a, Circle const & b) {
+    // Intersections should exist.
+    assert(getDistance(a.center, b.center) < a.radius + b.radius);
+
     vector<Point> intersections;
-    // No intersections.
-    if (getDistance(a.center, b.center) - (a.radius + b.radius) > EPS // too far
-        || abs(a.radius - b.radius) - getDistance(a.center, b.center) > EPS) { // included
-        return intersections;
-    }
+//    // No intersections.
+//    if (abs(a.radius - b.radius) - getDistance(a.center, b.center) > EPS) { // included
+//        return intersections;
+//    }
     long double d = getDistance(a.center, b.center);
     Point diff = (b.center - a.center) / d;
     long double rc = (d * d + pow(a.radius, 2) - pow(b.radius, 2)) / (2 * d);
