@@ -10,6 +10,7 @@ using namespace std;
 
 typedef long long ll;
 const ll MOD = 1e9 + 7;
+const long double EPS = 1e-8;
 
 {% if prediction_success %}
 void solve({{ formal_arguments }}){
