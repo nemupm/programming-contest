@@ -4,8 +4,15 @@ using namespace std;
 #define rep(i,x,y) for(ll i=(x);i<(y);i++)
 #define rrep(i,x,y) for(ll i=(ll)(y)-1;i>=(x);i--)
 #define all(x) (x).begin(),(x).end()
+#ifdef LOCAL
 #define dump(x)  cerr << #x << " = " << (x) << endl
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
+#define dassert(...) assert(__VA_ARGS__)
+#else
+#define dump(x)
+#define debug(x)
+#define dassert(...)
+#endif
 //#define int long long
 
 typedef long long ll;
