@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.6)
 project(programming-contest)
 
 file(GLOB SRCS "codes/*/*/*.cpp")
+file(GLOB LIBRARIES "library/*.hpp")
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES ${SRCS})
+set(SOURCE_FILES ${SRCS} ${LIBRARIES})
 
 add_executable(programming-contest ${SOURCE_FILES})
