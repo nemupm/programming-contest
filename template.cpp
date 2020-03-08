@@ -25,6 +25,8 @@ void solve({{ formal_arguments }}){
 {% endif %}
 
 signed main(){
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(NULL);
     {% if prediction_success %}
     {{input_part}}
     solve({{ actual_arguments }});
