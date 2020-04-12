@@ -26,32 +26,3 @@ namespace mod {
         return fact;
     }
 }
-
-struct combination {
-    combination(long long max_n, long long p) : _mod(p) {
-        factorials_ = std::vector<long long>(max_n+1, 1);
-        inverse_factorials_ = std::vector<long long>(max_n+1, 1);
-        for (long long i=1; i<max_n+1; i++) {
-            factorials_[i] = factorials_[i-1] * i;
-            factorials_[i] %= p;
-        }
-        inverse_factorials_[max_n] = mod::pow(factorials_[max_n],  p-2, p);
-        for (long long i=max_n-1; i>=1; i--) {
-            inverse_factorials_[i] = inverse_factorials_[i+1] * (i+1);
-            inverse_factorials_[i] %= p;
-        }
-    }
-
-    long long operator()(long long n, long long k) {
-        long long result = factorials_[n];
-        result *= inverse_factorials_[k];
-        result %= _mod;
-        result *= inverse_factorials_[n-k];
-        result %= _mod;
-        return result;
-    }
-
-private:
-    std::vector<long long> factorials_, inverse_factorials_;
-    long long _mod;
-};
