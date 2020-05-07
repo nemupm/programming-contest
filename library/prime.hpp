@@ -31,10 +31,18 @@ public:
     vector<pair<long long, int>> getPrimeFactorList(long long x) {
         assert (n_ * n_ >= x);
         vector<long long> factorList;
+        for (int i=(int)primes_.size()-1; i>=0; i--) {
+            if (n_ >= x) break;
+            while (x % primes_[i] == 0) {
+                x /= primes_[i];
+                factorList.emplace_back(primes_[i]);
+            }
+        }
         if (isPrime(x)) {
             factorList.emplace_back(x);
             x /= x;
         }
+        assert (n_ >= x);
         while (x != 1) {
             factorList.push_back(sieve_[x]);
             x /= sieve_[x];
