@@ -1,30 +1,30 @@
-#include "./mod.hpp"
-
-long long gcd(long long a, long long b) {
-    if (a < b) swap(a, b);
-    long long r = a % b;
-    while(r!=0){
-        a = b;
-        b = r;
-        r = a % b;
+namespace lib {
+    long long gcd(long long a, long long b) {
+        if (a < b) swap(a, b);
+        long long r = a % b;
+        while(r!=0){
+            a = b;
+            b = r;
+            r = a % b;
+        }
+        return b;
     }
-    return b;
-}
 
-long long lcm(long long a, long long b) {
-    return a * b / gcd(a, b);
-}
+    long long lcm(long long a, long long b) {
+        return a * b / gcd(a, b);
+    }
 
-long long floor(long long a, long long b) {
-    if (abs(a) % abs(b) == 0) return a / b;
-    if ((a > 0 && b > 0) || (a < 0 && b < 0)) return a / b;
-    else return a / b - 1;
-}
+    long long floor(long long a, long long b) {
+        if (abs(a) % abs(b) == 0) return a / b;
+        if ((a > 0 && b > 0) || (a < 0 && b < 0)) return a / b;
+        else return a / b - 1;
+    }
 
-long long ceil(long long a, long long b) {
-    if (abs(a) % abs(b) == 0) return a / b;
-    if ((a > 0 && b > 0) || (a < 0 && b < 0)) return a / b + 1;
-    else return a / b;
+    long long ceil(long long a, long long b) {
+        if (abs(a) % abs(b) == 0) return a / b;
+        if ((a > 0 && b > 0) || (a < 0 && b < 0)) return a / b + 1;
+        else return a / b;
+    }
 }
 
 struct hash_pair {

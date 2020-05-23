@@ -1,8 +1,8 @@
 // #include "mod.hpp"
 
 namespace mod {
-    struct combination {
-        combination(long long max_n, long long p) : _mod(p) {
+    struct Combination {
+        Combination(long long max_n, long long p) : _mod(p) {
             factorials_ = std::vector<long long>(max_n+1, 1);
             inverse_factorials_ = std::vector<long long>(max_n+1, 1);
             for (long long i=1; i<max_n+1; i++) {

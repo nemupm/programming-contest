@@ -27,36 +27,36 @@ namespace mod {
     }
 
     template <long long MOD>
-    struct mint {
+    struct Int {
         long long x;
-        mint(long long x = 0) : x((x%MOD+MOD)%MOD){}
-        mint operator-() const { return mint<MOD>(-x);}
-        mint& operator+=(const mint<MOD> a) {
+        Int(long long x = 0) : x((x % MOD + MOD) % MOD){}
+        Int operator-() const { return Int<MOD>(-x);}
+        Int& operator+=(const Int<MOD> a) {
             if ((x += a.x) >= MOD) x -= MOD;
             return *this;
         }
-        mint& operator-=(const mint<MOD> a) {
+        Int& operator-=(const Int<MOD> a) {
             if ((x += MOD-a.x) >= MOD) x -= MOD;
             return *this;
         }
-        mint& operator*=(const mint<MOD> a) {
+        Int& operator*=(const Int<MOD> a) {
             (x *= a.x) %= MOD; return *this;
         }
-        mint operator+(const mint<MOD> a) const { return mint<MOD>(*this) += a;}
-        mint operator-(const mint<MOD> a) const { return mint<MOD>(*this) -= a;}
-        mint operator*(const mint<MOD> a) const { return mint<MOD>(*this) *= a;}
-        mint pow(long long t) const {
+        Int operator+(const Int<MOD> a) const { return Int<MOD>(*this) += a;}
+        Int operator-(const Int<MOD> a) const { return Int<MOD>(*this) -= a;}
+        Int operator*(const Int<MOD> a) const { return Int<MOD>(*this) *= a;}
+        Int pow(long long t) const {
             if (!t) return 1;
-            mint<MOD> a = pow(t>>1);
+            Int<MOD> a = pow(t >> 1);
             a *= a;
             if (t&1) a *= *this;
             return a;
         }
 
-        mint inv() const { return pow(MOD-2);}
-        mint& operator/=(const mint<MOD> a) { return *this *= a.inv();}
-        mint operator/(const mint<MOD> a) const { return mint<MOD>(*this) /= a;}
+        Int inv() const { return pow(MOD - 2);}
+        Int& operator/=(const Int<MOD> a) { return *this *= a.inv();}
+        Int operator/(const Int<MOD> a) const { return Int<MOD>(*this) /= a;}
     };
 }
-std::istream& operator>>(std::istream& is, const mod::mint<MOD>& a) { return is >> a.x;}
-std::ostream& operator<<(std::ostream& os, const mod::mint<MOD>& a) { return os << a.x;}
+std::istream& operator>>(std::istream& is, const mod::Int<MOD>& a) { return is >> a.x;}
+std::ostream& operator<<(std::ostream& os, const mod::Int<MOD>& a) { return os << a.x;}

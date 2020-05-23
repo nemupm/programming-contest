@@ -1,0 +1,21 @@
+#include "bits/stdc++.h"
+
+#define rep(i,x,y) for(ll i=(x);i<(y);i++)
+#define rrep(i,x,y) for(ll i=(ll)(y)-1;i>=(x);i--)
+#define all(x) (x).begin(),(x).end()
+#define debug(x) out << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
+#define itrdebug(x) out << #x << " "; for (auto & el : (x)) {out << (el) << " ";} out << endl
+#define dassert(...) assert(__VA_ARGS__)
+//#define int long long
+
+using namespace std;
+
+typedef long long ll;
+
+const ll MOD = 1e9 + 7;
+
+class %ClassName% {
+public:
+    void solve(std::istream& in, std::ostream& out) {
+    }
+};
