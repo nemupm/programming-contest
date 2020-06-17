@@ -34,6 +34,49 @@ struct Point {
     }
 };
 
+template<class NUMBER>
+struct Point {
+    NUMBER x, y;
+    Point (NUMBER x, NUMBER y) : x(x), y(y) {}
+    Point () = default;
+
+    Point operator + (const Point & point) const {
+        return Point(x + point.x, y + point.y);
+    }
+    Point operator - (const Point & point) const {
+        return Point(x - point.x, y, - point.y);
+    }
+    Point operator * (const NUMBER d) const {
+        return Point(x * d, y * d);
+    }
+    Point operator / (const NUMBER d) const {
+        return Point(x / d, y / d);
+    }
+    Point& operator += (const Point & point) {
+        x += point.x;
+        y += point.y;
+        return *this;
+    }
+    Point& operator -= (const Point & point) {
+        x -= point.x;
+        y -= point.y;
+        return *this;
+    }
+    Point& operator *= (const NUMBER d) {
+        x *= d;
+        y *= d;
+        return *this;
+    }
+    Point& operator /= (const NUMBER d) {
+        x /= d;
+        y /= d;
+        return *this;
+    }
+    bool operator < (const Point& point) const {
+        return x < point.x && y < point.y;
+    }
+};
+
 struct Circle {
     Point center;
     FLOAT_TYPE radius;
