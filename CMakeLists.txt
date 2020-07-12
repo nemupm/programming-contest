@@ -17,3 +17,4 @@ file(GLOB TASKS "tasks/*.cpp")
 file(GLOB_RECURSE HEADERS "library/*.hpp" )
 
 add_executable(test ${TASKS} ${HEADERS})
+set_target_properties(test PROPERTIES LINKER_LANGUAGE CXX)
