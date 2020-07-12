@@ -4,6 +4,7 @@ using namespace std;
 #define rep(i,x,y) for(ll i=(x);i<(y);i++)
 #define rrep(i,x,y) for(ll i=(ll)(y)-1;i>=(x);i--)
 #define all(x) (x).begin(),(x).end()
+#define itrout(x) for(int i=0;i<x.size();i++) {cout << x[i] << (i==x.size()-1 ? "\n" : " ");}
 #ifdef LOCAL
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
 #define itrdebug(x) cerr << #x << " "; for (auto & el : (x)) {cerr << (el) << " ";} cerr << endl
