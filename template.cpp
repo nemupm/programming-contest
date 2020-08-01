@@ -7,10 +7,12 @@ using namespace std;
 #define itrout(x) for(int i=0;i<x.size();i++) {cout << x[i] << (i==x.size()-1 ? "\n" : " ");}
 #ifdef LOCAL
 #define debug(x) cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
+#define debugbit(x, n) cerr << #x << " = " << bitset<n>(x) << " (L" << __LINE__ << ")" << " " << __FILE__ << endl
 #define itrdebug(x) cerr << #x << " "; for (auto & el : (x)) {cerr << (el) << " ";} cerr << endl
 #define dassert(...) assert(__VA_ARGS__)
 #else
 #define debug(x)
+#define debugbit(x, n)
 #define itrdebug(x)
 #define dassert(...)
 #endif

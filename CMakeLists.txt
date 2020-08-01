@@ -2,11 +2,12 @@ cmake_minimum_required(VERSION 3.6)
 project(programming-contest CXX)
 
 file(GLOB SRCS "codes/*/*/*.cpp")
+file(GLOB SRCS2 "codes/*/*/*/*/*.cpp")
 file(GLOB LIBRARIES "library/*.hpp")
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES ${SRCS} ${LIBRARIES})
+set(SOURCE_FILES ${SRCS} ${SRCS2} ${LIBRARIES})
 
 add_executable(programming-contest ${SOURCE_FILES})
 set_target_properties(programming-contest PROPERTIES LINKER_LANGUAGE CXX)
