@@ -3,3 +3,5 @@ tasks/
 .idea/
 *.exe
 workspace/
+output/main.cpp
+testrunner/main.cpp
