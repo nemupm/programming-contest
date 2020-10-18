@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+//#include <atcoder/all>
 using namespace std;
 
 #define rep(i,x,y) for(ll i=(x);i<(y);i++)
@@ -17,6 +18,7 @@ using namespace std;
 #define dassert(...)
 #endif
 //#define int long long
+//using mint = atcoder::modint;
 
 typedef long long ll;
 const ll MOD = 1e9 + 7;

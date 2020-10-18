@@ -19,3 +19,5 @@ file(GLOB_RECURSE HEADERS "library/*.hpp" )
 
 add_executable(test ${TASKS} ${HEADERS})
 set_target_properties(test PROPERTIES LINKER_LANGUAGE CXX)
+
+include_directories("library/ac-library")
