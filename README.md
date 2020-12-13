@@ -1,5 +1,16 @@
 ## atcoder
 
+### setup
+
+```
+brew install gcc
+ln -s /usr/local/bin/$(ls /usr/local/bin/|grep g++-|head -n1) /usr/local/bin/g++
+```
+
+```
+pip install atcoder-tools
+```
+
 ### generate
 
 ```
