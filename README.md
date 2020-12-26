@@ -19,8 +19,10 @@ atcoder-tools gen <contest_id> --workspace $HOME/src/github.com/nemupm/programmi
 
 ### compile, test, submit
 
+[sanitizer doesn't work in macos with arm](https://github.com/google/sanitizers/wiki/AddressSanitizer)
+
 ```
-g++ -o answer.exe main.cpp
+g++ -O2 -I$HOME/src/github.com/nemupm/programming-contest/library/ac-library/ -DLOCAL -fsanitize=undefined,address ./main.cpp -o answer.exe
 atcoder-tools test
 atcoder-tools submit -u
 ```
