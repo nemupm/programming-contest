@@ -1,17 +1,37 @@
 namespace lib {
-    long long gcd(long long a, long long b) {
-        if (a < b) swap(a, b);
-        long long r = a % b;
-        while(r!=0){
-            a = b;
-            b = r;
-            r = a % b;
+    // a x + b y = gcd(a, b)
+    template <typename T>
+    T extgcd(T a, T b, T &x, T &y) {
+        T g = a;
+        x = 1;
+        y = 0;
+        if (b != 0) {
+            g = extgcd<T>(b, a % b, y, x);
+            y -= (a / b) * x;
         }
-        return b;
+        return g;
     }
 
-    long long lcm(long long a, long long b) {
-        return a * b / gcd(a, b);
+    // a x + b y = c
+    // x(>=0) is minimum
+    template <typename T>
+    void extgcd(T a, T b, T &x, T &y, T c) {
+        T g = extgcd<T>(a, b, x, y);
+        if (g < 0) {
+            g *= -1;
+            x *= -1;
+            y *= -1;
+        }
+        assert(abs(c) % g == 0);
+        T l = lcm(abs(a), abs(b));
+        if ((x < 0) ^ (c < 0)) {
+            x = abs(l / a) - abs(x) % abs(l / a);
+        }
+        x = (__int128(abs(x)) % abs(l / a)) * (__int128(abs(c) / g) % abs(l / a));
+        x %= abs(l / a);
+        assert(x >= 0);
+        y = (__int128(c) - __int128(a) * x) / b;
+        assert(__int128(a) * x + __int128(b) * y == c);
     }
 
     long long floor(long long a, long long b) {
