@@ -11,7 +11,7 @@ plugins {
 sourceSets {
     main {
         java {
-            setSrcDirs(listOf("codes"))
+            setSrcDirs(listOf("codes", "library"))
         }
     }
 }
